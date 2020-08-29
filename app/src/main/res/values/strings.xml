@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">ListAndAdapters</string>
+
+    <string-array name="arrayOfPresidents">
+        <item>Risto Ryti,1919,1925,First president</item>
+        <item>Lauri Relander,1925,1931,Second president</item>
+        <item>P. E. Svinhufvud,1931,1937,Third president</item>
+        <item>Kyosti Kallio,1937,1940,Fourth president</item>
+        <item>Risto Ryti,1940,1944,Fifth president</item>
+        <item>Carl Gustaf Emil Mannerheim,1944,1946,Sixth president</item>
+        <item>Juho Kusti Paasikivi,1946,1956,Seventh president</item>
+        <item>Urho Kekkonen,1956,1982,Longest serving president</item>
+        <item>Mauno Koivisto,1982,1994,Manu</item>
+        <item>Martti Ahtisaari,1994,2000,Mahtisaari</item>
+        <item>Tarjo Halonen,2000,2012,First female president</item>
+        <item>Sauli Niniisto,2012,0000,Presides 100 anniversary of Finland </item>
+    </string-array>
+
 </resources>

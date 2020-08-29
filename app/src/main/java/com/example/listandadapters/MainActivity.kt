@@ -1,19 +1,22 @@
 package com.example.listandadapters
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private val presidents = GlobalPresident.presidents
+    lateinit var presidents: ArrayList<President>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
+        presidents = President.initPresidentObjects(this)
+        Log.d("presidents" , presidents.toString())
 
         listView.adapter = PresidentAdapter(this, presidents)
-
         listView.onItemClickListener = OnItemClickListener()
     }
 
