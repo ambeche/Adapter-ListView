@@ -1,5 +1,8 @@
 package com.example.listandadapters
 
+import android.content.Intent
+import android.content.Intent.EXTRA_TEXT
+import android.content.Intent.EXTRA_TITLE
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -18,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         listView.adapter = PresidentAdapter(this, presidents)
         listView.onItemClickListener = OnItemClickListener()
+        listView.onItemLongClickListener = OnItemLongClickListener()
     }
 
     private inner class OnItemClickListener : AdapterView.OnItemClickListener {
@@ -28,6 +32,18 @@ class MainActivity : AppCompatActivity() {
             tvEndDate.text = "${president.end}"
             tvDetails.text = president.details
             linearLayout2.setBackgroundColor(getColor(R.color.colorPrimaryDark))
+        }
+    }
+
+    private inner class OnItemLongClickListener : AdapterView.OnItemLongClickListener {
+        override fun onItemLongClick(parent: AdapterView<*>?, v: View?, pos: Int, id: Long)
+                : Boolean {
+            val intent = Intent(this@MainActivity, PresidentWebView::class.java)
+            intent.putExtra(EXTRA_TEXT, presidents[pos].url)
+            intent.putExtra(EXTRA_TITLE, presidents[pos].name)
+
+            startActivity(intent)
+            return true
         }
     }
 }

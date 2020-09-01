@@ -2,10 +2,11 @@ package com.example.listandadapters
 
 import android.content.Context
 
-class President (var name: String, var start: Int, var end: Int, var details: String) :
-    Comparable<President> {
+class President (var name: String, var start: Int, var end: Int, var details: String, val url: String)
+    :Comparable<President> {
+
     override fun compareTo(other: President): Int {
-        return this.start.compareTo(this.end)
+        return this.start.compareTo( other.start)
     }
 
     override fun toString(): String {
@@ -19,9 +20,9 @@ class President (var name: String, var start: Int, var end: Int, var details: St
             val presidentInfo = context.resources.getStringArray(R.array.arrayOfPresidents)
             for (p in presidentInfo) {
                 val info: List<String> = p.split( ',')
-                val (name, start, end, details) = info
+                val (name, start, end, details, url) = info
 
-                presidents.add( President(name, start.toInt(), end.toInt(), details ))
+                presidents.add( President(name, start.toInt(), end.toInt(), details, url))
             }
             presidents.sort()
             return presidents

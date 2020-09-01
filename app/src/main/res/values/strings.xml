@@ -2,18 +2,18 @@
     <string name="app_name">ListAndAdapters</string>
 
     <string-array name="arrayOfPresidents">
-        <item>Risto Ryti,1919,1925,First president</item>
-        <item>Lauri Relander,1925,1931,Second president</item>
-        <item>P. E. Svinhufvud,1931,1937,Third president</item>
-        <item>Kyosti Kallio,1937,1940,Fourth president</item>
-        <item>Risto Ryti,1940,1944,Fifth president</item>
-        <item>Carl Gustaf Emil Mannerheim,1944,1946,Sixth president</item>
-        <item>Juho Kusti Paasikivi,1946,1956,Seventh president</item>
-        <item>Urho Kekkonen,1956,1982,Longest serving president</item>
-        <item>Mauno Koivisto,1982,1994,Manu</item>
-        <item>Martti Ahtisaari,1994,2000,Mahtisaari</item>
-        <item>Tarjo Halonen,2000,2012,First female president</item>
-        <item>Sauli Niniisto,2012,0000,Presides 100 anniversary of Finland </item>
+        <item>Kaarlo Juho Stahlberg,1919,1925,First president,https://en.wikipedia.org/wiki/Kaarlo_Juho_St%C3%A5hlberg</item>
+        <item>Lauri Relander,1925,1931,Second president,https://en.wikipedia.org/wiki/Lauri_Kristian_Relander</item>
+        <item>P. E. Svinhufvud,1931,1937,Third president,https://en.wikipedia.org/wiki/Pehr_Evind_Svinhufvud</item>
+        <item>Kyosti Kallio,1937,1940,Fourth president,https://en.wikipedia.org/wiki/Ky%C3%B6sti_Kallio</item>
+        <item>Risto Ryti,1940,1944,Fifth president,https://en.wikipedia.org/wiki/Risto_Ryti</item>
+        <item>Carl Gustaf Emil Mannerheim,1944,1946,Sixth president,https://en.wikipedia.org/wiki/Carl_Gustaf_Emil_Mannerheim</item>
+        <item>Juho Kusti Paasikivi,1946,1956,Seventh president,https://en.wikipedia.org/wiki/Juho_Kusti_Paasikivi</item>
+        <item>Urho Kekkonen,1956,1982,Longest serving president,https://en.wikipedia.org/wiki/Urho_Kekkonen</item>
+        <item>Mauno Koivisto,1982,1994,Manu,https://en.wikipedia.org/wiki/Mauno_Koivisto</item>
+        <item>Martti Ahtisaari,1994,2000,Mahtisaari,https://en.wikipedia.org/wiki/Martti_Ahtisaari</item>
+        <item>Tarjo Halonen,2000,2012,First female president,https://en.wikipedia.org/wiki/Tarja_Halonen</item>
+        <item>Sauli Niniisto,2012,2024,Presides 100 anniversary of Finland,https://en.wikipedia.org/wiki/Sauli_Niinist%C3%B6</item>
     </string-array>
 
 </resources>
