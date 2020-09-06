@@ -45,12 +45,26 @@
 
         </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp">
+
         <TextView
             android:id="@+id/tvDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="6dp"
             style="@style/secondaryTextStyle" />
+        <TextView
+            android:id="@+id/tvHits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            style="@style/secondaryTextStyle" />
+
+    </LinearLayout>
 
     </LinearLayout>
 

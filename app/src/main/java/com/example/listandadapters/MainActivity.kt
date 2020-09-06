@@ -8,10 +8,18 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var presidents: ArrayList<President>
+    lateinit var totalHitViewModel: TotalHitViewModel
+
+    private val hitsObserver =
+        Observer<TotalHitApi.Model.PresidentQuery> {
+                value -> value?.let { getHits(value.searchInfo.totalHits) }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -19,9 +27,22 @@ class MainActivity : AppCompatActivity() {
         presidents = President.initPresidentObjects(this)
         Log.d("presidents" , presidents.toString())
 
+        totalHitViewModel = ViewModelProvider( this).get(TotalHitViewModel:: class.java)
+        //totalHitViewModel.hitCount.observe(this, hitsObserver )
+
+
         listView.adapter = PresidentAdapter(this, presidents)
         listView.onItemClickListener = OnItemClickListener()
         listView.onItemLongClickListener = OnItemLongClickListener()
+
+//        listView.setOnItemClickListener{_, _, position, _, ->
+//            totalHitViewModel.queryName(presidents[position].name)
+//            totalHitViewModel.hitCount.observe(this, hitsObserver )
+//        }
+    }
+
+    private fun getHits (value: String) {
+        tvHits.text = value
     }
 
     private inner class OnItemClickListener : AdapterView.OnItemClickListener {
@@ -32,6 +53,8 @@ class MainActivity : AppCompatActivity() {
             tvEndDate.text = "${president.end}"
             tvDetails.text = president.details
             linearLayout2.setBackgroundColor(getColor(R.color.colorPrimaryDark))
+
+            totalHitViewModel.queryName(president.name)
         }
     }
 
