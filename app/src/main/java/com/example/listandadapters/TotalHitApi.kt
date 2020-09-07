@@ -8,13 +8,14 @@ import retrofit2.http.Query
 object TotalHitApi {
     const val URL = "https://en.wikipedia.org/"
     object Model {
+        data class FetchedData(val query: PresidentQuery)
         data class PresidentQuery(val searchInfo: SearchInfo )
-        data class SearchInfo(val totalHits: String)
+        data class SearchInfo(val totalHits: Int)
     }
 
     interface Service {
         @GET("w/api.php?action=query&format=json&list=search")
-        suspend fun presidentName(@Query("srsearch") search: String): Model.PresidentQuery
+        suspend fun presidentName(@Query("srsearch") search: String): Model.FetchedData
     }
 
     private val retrofit = Retrofit.Builder()

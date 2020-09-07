@@ -7,11 +7,12 @@ import androidx.lifecycle.switchMap
 import kotlinx.coroutines.Dispatchers
 
 class TotalHitViewModel : ViewModel() {
-    val repository : WikiRepository = WikiRepository()
-    private val query = MutableLiveData<String>()
+    private val repository : WikiRepository = WikiRepository()
+    val query = MutableLiveData<String>()
+
     fun queryName(name: String) { query . value = name }
-    val hitCount = query . switchMap {
-        liveData (Dispatchers.IO ) { emit( repository.getTotalHits( it )) }
+    val hitCount = query.switchMap {name ->
+        liveData (Dispatchers.IO ) { emit( repository.getTotalHits( name )) }
     }
 }
 

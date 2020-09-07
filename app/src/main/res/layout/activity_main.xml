@@ -53,15 +53,17 @@
 
         <TextView
             android:id="@+id/tvDetails"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="3"
             android:padding="6dp"
             style="@style/secondaryTextStyle" />
         <TextView
             android:id="@+id/tvHits"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="6dp"
+            android:layout_weight="1"
+            android:padding="2dp"
             style="@style/secondaryTextStyle" />
 
     </LinearLayout>

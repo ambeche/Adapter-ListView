@@ -15,11 +15,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var presidents: ArrayList<President>
     lateinit var totalHitViewModel: TotalHitViewModel
 
-    private val hitsObserver =
-        Observer<TotalHitApi.Model.PresidentQuery> {
-                value -> value?.let { getHits(value.searchInfo.totalHits) }
-        }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,35 +22,31 @@ class MainActivity : AppCompatActivity() {
         presidents = President.initPresidentObjects(this)
         Log.d("presidents" , presidents.toString())
 
-        totalHitViewModel = ViewModelProvider( this).get(TotalHitViewModel:: class.java)
-        //totalHitViewModel.hitCount.observe(this, hitsObserver )
-
+        totalHitViewModel = ViewModelProvider(this).get(TotalHitViewModel::class.java)
 
         listView.adapter = PresidentAdapter(this, presidents)
-        listView.onItemClickListener = OnItemClickListener()
         listView.onItemLongClickListener = OnItemLongClickListener()
 
-//        listView.setOnItemClickListener{_, _, position, _, ->
-//            totalHitViewModel.queryName(presidents[position].name)
-//            totalHitViewModel.hitCount.observe(this, hitsObserver )
-//        }
-    }
-
-    private fun getHits (value: String) {
-        tvHits.text = value
-    }
-
-    private inner class OnItemClickListener : AdapterView.OnItemClickListener {
-        override fun onItemClick(parent: AdapterView<*>?, v: View?, pos: Int, rowId: Long) {
-            val president = presidents[pos]
-            tvName.text = president.name
-            tvStartDate.text = "${president.start}"
-            tvEndDate.text = "${president.end}"
-            tvDetails.text = president.details
-            linearLayout2.setBackgroundColor(getColor(R.color.colorPrimaryDark))
-
-            totalHitViewModel.queryName(president.name)
+        listView.setOnItemClickListener{_, _, pos, _, ->
+            displayDetails(pos)
+            Log.d("hits", totalHitViewModel.query.value.toString())
+            totalHitViewModel.hitCount.observe(this, Observer {data ->
+                val hits = data.query.searchInfo.totalHits.toString()
+                tvHits.text = hits
+                Log.d("hits", hits)
+            })
         }
+    }
+
+    private fun displayDetails (pos: Int) {
+        val president = presidents[pos]
+        tvName.text = president.name
+        tvStartDate.text = "${president.start}"
+        tvEndDate.text = "${president.end}"
+        tvDetails.text = president.details
+        linearLayout2.setBackgroundColor(getColor(R.color.colorPrimaryDark))
+
+        totalHitViewModel.queryName(president.name)
     }
 
     private inner class OnItemLongClickListener : AdapterView.OnItemLongClickListener {
